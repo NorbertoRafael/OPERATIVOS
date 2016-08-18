@@ -5,6 +5,7 @@ import java.io.*;
 import java.net.*;
 import javax.swing.JOptionPane;
 
+
 public class ConectorCliente extends Thread {
 
     private Socket s;
