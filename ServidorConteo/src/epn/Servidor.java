@@ -22,8 +22,14 @@ public class Servidor extends Thread {
     private BufferedReader entrada;
     private ArrayList<String> lista;
     private static int num_con = 1;
+    private static InterfazServidor interfaz=new InterfazServidor();
+    private static String [] log = new String[3];
+    public Servidor() {
+         
+         
+    }
     
-
+    
     public Servidor(Socket socket) throws IOException {
         this.miServicio = socket;
         num_con++;
@@ -54,11 +60,12 @@ public class Servidor extends Thread {
         String recorreAux[];
         String dirAux[];
         String line="";
+        //int contador=0;
         boolean BAND = false;
         
         try {
             directorio=directorio.trim();
-            dirAux = directorio.split("[¡|!|¿|?|.|,|;|:|-|_|(|)|�|%|$|=]*");
+            dirAux = directorio.split("[%|&|#|+|¡|!|¿|?|.|,|;|:|-|_|(|)|�|0|1|2|3|4|5|6|7|8|9|<|>]*");
                         directorio = "";
 
                         for (int i = 0; i < dirAux.length; i++) {
@@ -77,16 +84,17 @@ public class Servidor extends Thread {
                     recorre = tokens.nextToken();
 
                     if (recorre.startsWith(letra) == true || recorre.startsWith(letra.toUpperCase()) == true || recorre.startsWith(letra.toLowerCase()) == true) {
-
-                        recorreAux = recorre.split("[¡|!|¿|?|.|,|;|:|-|_|(|)|�]*");
+                        //contador++;
+                        recorreAux = recorre.split("[»|%|&|#|+|¡|!|¿|?|.|,|;|:|-|_|(|)|�|0|1|2|3|4|5|6|7|8|9]*");
                         recorre = "";
 
                         for (int i = 0; i < recorreAux.length; i++) {
 
                             recorre += recorreAux[i];
                         }
-
+                     //   if(!lista.contains(recorre))
                         lista.add(recorre);
+                        
                         BAND = true;
                     }
                 }
@@ -113,7 +121,7 @@ public class Servidor extends Thread {
             }
             fichero.close();
         } catch (Exception ex) {
-            System.out.println("Mensaje: " + ex.getMessage());
+            interfaz.setTextAvisos("Mensaje: " + ex.getMessage());
         } 
     }
 
@@ -143,23 +151,28 @@ public class Servidor extends Thread {
 
             }
 	} catch (Exception e) {
-            System.out.println("Se ha desconectado:      "+miServicio+"      Hora:   "+new Date());
+                        log[0]=""+miServicio;
+                        log[1]=""+new Date();
+                        log[2]="Desconectado";
+            interfaz.setTablaLog(log);
+            System.out.println("Se ha desconectado:      "+miServicio+"     Hora: "+new Date());
             num_con--;
         }
 
     }
 
-    public static void main(String[] args) {
-        InterfazServidor interfaz=new InterfazServidor();
-        interfaz.setVisible(true);
+    public static void main(String args[]) {
         
+       
+        interfaz.setVisible(true);
         ServerSocket ss=null;
         Socket socket=null;
-        System.out.print("Inicializando servidor... ");
+       
+        interfaz.setTextAvisos("Inicializando servidor... ");
         
         try {
            ss =new ServerSocket(5555);
-            System.out.println("\t[OK]");
+            interfaz.setTextAvisos("Inicializando servidor... \t[OK]");
             
             while (true) {
                  socket = ss.accept();
@@ -172,12 +185,18 @@ public class Servidor extends Thread {
                     continue;
                 } else {
                     
-                    System.out.println("Nueva conexión entrante: " + socket + "     Hora: " + new Date());
+                    
+                        log[0]=""+socket;
+                        log[1]=""+new Date();
+                        log[2]="Conectado";
+                    interfaz.setTablaLog(log);
+                    System.out.println("Nueva conexión entrante: " +log[0]+ "     Hora: " + log[1]);
                     ((Servidor) new Servidor(socket)).start();
                 }
 
             }
         } catch (IOException ex) {
+            interfaz.setTextAvisos("Error con al levantar servicio");
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         } 
 
