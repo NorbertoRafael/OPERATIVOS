@@ -1,8 +1,8 @@
 # OPERATIVOS
 
-Andrango Norberto
-Mejia David
-Proaño Gonzalo
+Andrango Norberto,
+Mejia David,
+Proaño Gonzalo,
 Simbaña Sandy
 
 
