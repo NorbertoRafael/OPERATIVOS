@@ -29,7 +29,7 @@ public class Servidor extends Thread {
         num_con++;
        
     }
-//En esta seccion como su metodo indica se receptan los datos.
+
     public void recibirDatos() {
         
         StringTokenizer tokens = new StringTokenizer(flujo, "-");
@@ -45,7 +45,7 @@ public class Servidor extends Thread {
     
 
     }
-//Numero de datos.
+
     public void EnviarConteo() {
 
         lista = new <String>ArrayList();
@@ -150,11 +150,13 @@ public class Servidor extends Thread {
     }
 
     public static void main(String[] args) {
-
+        InterfazServidor interfaz=new InterfazServidor();
+        interfaz.setVisible(true);
         
         ServerSocket ss=null;
         Socket socket=null;
         System.out.print("Inicializando servidor... ");
+        
         try {
            ss =new ServerSocket(5555);
             System.out.println("\t[OK]");
@@ -169,6 +171,7 @@ public class Servidor extends Thread {
                     socket.close();
                     continue;
                 } else {
+                    
                     System.out.println("Nueva conexión entrante: " + socket + "     Hora: " + new Date());
                     ((Servidor) new Servidor(socket)).start();
                 }
