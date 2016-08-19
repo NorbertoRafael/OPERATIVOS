@@ -1,6 +1,6 @@
-package epn;
-
-import java.io.*;
+package epn;									//paquete
+										//librerias utilizadas
+import java.io.*;							
 import java.net.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,44 +10,40 @@ import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Servidor extends Thread {
+public class Servidor extends Thread {					//Clase que implementa Thread y que cada hilo representa una conexion con el cliente
 
     
-    private DataOutputStream salidaDatos;
-    private InputStreamReader inputStream;
-    private String flujo;
-    private Socket miServicio;
-    private String directorio;
-    private String letra;
-    private BufferedReader entrada;
-    private ArrayList<String> lista;
-    private static int num_con = 1;
-    private static InterfazServidor interfaz=new InterfazServidor();
-    private static String [] log = new String[3];
-    public Servidor() {
-         
-         
-    }
+    private DataOutputStream salidaDatos;				//variable de salida de la comunicacion
+    private InputStreamReader inputStream;				//variable de entrada de la comunicaion
+    private String flujo;						//variable que almacena el flujo inicial enviado por el cliente
+    private Socket miServicio;						//Creacion de socket de comunicacion
+    private String directorio;						//variable auxiliar para extraer el autor y libro (directorio) solicitado
+    private String letra;						//variable auxiliar para extraer la letra que indique el cliente
+    private BufferedReader entrada;					//variable de entrada de la comunicacion
+    private ArrayList<String> lista;					//Arraylist de resultados
+    private static int num_con = 1;					//Contador de conexiones concurrentes
+    private static InterfazServidor interfaz=new InterfazServidor();	//Objeto que inicializa la interfaz
+    private static String [] log = new String[3];			//Array que permite almacenar la informacion de la conexion
     
     
-    public Servidor(Socket socket) throws IOException {
-        this.miServicio = socket;
-        num_con++;
+    public Servidor(Socket socket) throws IOException {		//Contructor que recibe como parametro el socket de comunicacion cliente/servidor
+        this.miServicio = socket;				//Se inicializa el socket de servicio
+        num_con++;						//Aumenta en uno el contador de conexiones concurrentes
        
     }
 
-    public void recibirDatos() {
-        
+    public void recibirDatos() {			//el flujo recibido es tratado para obtener los parametros necesarios
+        						//del calcula de palabras
         StringTokenizer tokens = new StringTokenizer(flujo, "-");
         directorio = tokens.nextToken();
         letra = tokens.nextToken();
-        EnviarConteo();
+        EnviarConteo();					//Con los parametros ya extraidos se llama al metodo que realiza los calculos
         
     }
 
-    public void enviarDatos(String flujo) throws IOException {
+    public void enviarDatos(String flujo) throws IOException {	
 
-        salidaDatos.writeUTF(flujo);
+        salidaDatos.writeUTF(flujo);		//el metodo enviarDatos envia el resultado de la peticion a travez del canal de comunicacion al cliente
     
 
     }
