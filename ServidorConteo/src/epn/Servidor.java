@@ -29,7 +29,7 @@ public class Servidor extends Thread {
         num_con++;
        
     }
-
+//En esta seccion como su metodo indica se receptan los datos.
     public void recibirDatos() {
         
         StringTokenizer tokens = new StringTokenizer(flujo, "-");
@@ -45,7 +45,7 @@ public class Servidor extends Thread {
     
 
     }
-
+//Numero de datos.
     public void EnviarConteo() {
 
         lista = new <String>ArrayList();
