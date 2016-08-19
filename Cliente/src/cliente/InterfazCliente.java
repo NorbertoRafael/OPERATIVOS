@@ -115,11 +115,26 @@ public class InterfazCliente extends javax.swing.JFrame {
 
     private void BotonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEnviarActionPerformed
 
-        String texto =PeticionCliente.getText();
-        textoCliente.setText(textoCliente.getText()+" \n Peticion:"+texto);
-        texto=cifrado13(texto);//De aqui cogemos la palabra no poner texto
-        MainCliente.cliente.MandaPeticionesServidor(texto);        
-        PeticionCliente.setText("");
+       try{
+        String Autor="";
+        String NombreLibro="";
+        String buscar="";
+        String total="";
+        Autor=txtAutor.getText();
+        NombreLibro=txtNombreLibro.getText();
+        buscar=txtbuscar.getText();
+        total=Autor+"/"+NombreLibro+"-"+buscar;
+        textoCliente.setText(textoCliente.getText()+" \n Peticion:"+total);
+        MainCliente.cliente.MandaServidor(total);        
+        txtAutor.setText("");
+        txtNombreLibro.setText("");
+        txtbuscar.setText("");
+       }catch(Exception e)
+       {
+       JOptionPane.showMessageDialog(null, "No se ha conectado");
+       }
+      
+    }       
       
     }//GEN-LAST:event_BotonEnviarActionPerformed
 
