@@ -4,7 +4,7 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
+//cambiar esta clase
 
 public class InterfazServidor extends javax.swing.JFrame {
     DefaultTableModel tablamodel;
