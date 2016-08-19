@@ -1,10 +1,15 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package epn;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-//cambiar esta clase
+
 
 public class InterfazServidor extends javax.swing.JFrame {
     DefaultTableModel tablamodel;
@@ -167,4 +172,3 @@ public class InterfazServidor extends javax.swing.JFrame {
     private javax.swing.JTextArea textAvisos;
     // End of variables declaration                   
 }
-
