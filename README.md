@@ -1,6 +1,12 @@
 # OPERATIVOS
 
-CONTADOR DE PALABRAS USANDO SOCKETS E HILOS
+Andrango Norberto
+Mejia David
+Proaño Gonzalo
+Simbaña Sandy
+
+
+# CONTADOR DE PALABRAS USANDO SOCKETS E HILOS
 
 El programa de conteo de palabras consiste en uno a maximo diez clientes que solicitan dicho servicio a un servidor.
 El cliente y el servidor son programas independientes que se comunican entre si mediante sockets en una red.
@@ -8,6 +14,7 @@ Para ejecutar el programa del cliente primeramente debe estar levantado el servi
 del servidor debe estar en ejecucion y trabajando. 
 
 PROGRAMA DEL CLIENTE
+
 En el programa cliente se ingresa la ip o direccion del servidor que proporciona el servicio.
 Una vez conectado mediante un puerto especifico el cliente es capaz de solicitar la busqueda 
 en un libro de todas las palabras que comiencen con una letra indicada y contarlas.
@@ -16,6 +23,7 @@ por una lista de todas las palabras encontradas y el numero de palabras encontra
 El cliente podrá seguir enviando peticiones bajo la misma conexion hasta que este la termine.
 
 PROGRAMA DEL SERVIDOR
+
 Una vez ejecutado el programa servidor, el servicio se levata y escucha a travez de un puerto especifico, 
 a la espera de una nueva solicitud o solicitudes por parte de clientes.
 Una vez aceptada la solicitud se mostrara en la interfaz las conexiones con hora y fecha,
