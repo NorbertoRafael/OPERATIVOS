@@ -7,7 +7,8 @@ Simbaña Sandy
 
 
 # CONTADOR DE PALABRAS USANDO SOCKETS E HILOS
-
+EL programa lo realizamos en lenguaje de programacion JAVA con IDE Netbeans.
+Para la facilidad de la verificacion de la funcionalidad de nuestro poryecto se ha habilitado los ejecutables.
 El programa de conteo de palabras consiste en uno a maximo diez clientes que solicitan dicho servicio a un servidor.
 El cliente y el servidor son programas independientes que se comunican entre si mediante sockets en una red.
 Para ejecutar el programa del cliente primeramente debe estar levantado el servicio, es decir; el programa
