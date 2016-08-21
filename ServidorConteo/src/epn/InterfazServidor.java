@@ -5,10 +5,10 @@
  */
 package epn;
 
-import java.awt.CardLayout;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import java.awt.CardLayout;                                        // librerias necesarias para la ejecucion de la interfaz
+import javax.swing.JPanel;                                          //jpanel
+import javax.swing.JTable;                                          //jtable
+import javax.swing.table.DefaultTableModel;                         //modelo ha representar en todas las tablas
 
 
 public class InterfazServidor extends javax.swing.JFrame {
@@ -16,21 +16,21 @@ public class InterfazServidor extends javax.swing.JFrame {
     /**
      * Creates new form InterfazServidor
      */
-    public InterfazServidor() {
-        initComponents();
-        tablamodel=tabla(tablaLog);
+    public InterfazServidor() {                                     //Lama a a los metodos crear los hilos por cada coneccion aceptada
+        initComponents();                                           
+        tablamodel=tabla(tablaLog);                                 //Nos da la forma de tabla para la tabla log que son los conectados 
         
     }
     public void setTablaLog(String [] login){
-        tablamodel.addRow(login);
+        tablamodel.addRow(login);                                   //Añadimos una conexion a la tabla
     }
     public void setTextAvisos(String aviso){
-        textAvisos.setText(aviso);
+        textAvisos.setText(aviso);                                  //colocamos mensajes de validaciones 
     }
     
     public DefaultTableModel tabla(JTable table) {
-        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
-        return modelo;
+        DefaultTableModel modelo = (DefaultTableModel) table.getModel();//Nos da la forma de la tabla 
+        return modelo;                                                  //retorna la tabla
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,13 +54,13 @@ public class InterfazServidor extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabel1.setText("LOGINS");
+        jLabel1.setText("LOGINS");                                      //colocamos el tamaño de la letra y el nombre "LOGIN"
 
         tablaLog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
-            new String [] {
+            new String [] {                                             //creamos un areglo que nos almacena la hora , el estado y los datos de conexion.
                 "Conexion", "Hora", "Estado"
             }
         ));
@@ -121,7 +121,8 @@ public class InterfazServidor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>                        
-    private void mostrarTarjetas(JPanel panel, String cadena) {//strin g es latargeta ala que quieres ir 
+    private void mostrarTarjetas(JPanel panel, String cadena) {                                                 //metodo que nos ayuda a cambiar entre los paneles
+        //strin g es latargeta ala que quieres ir 
         CardLayout card = (CardLayout) panel.getLayout();
         card.show(panel, cadena);
     }
@@ -156,7 +157,7 @@ public class InterfazServidor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazServidor().setVisible(true);
+                new InterfazServidor().setVisible(true);            //haciedno visible la interfaz de servidor
             }
         });
     }
