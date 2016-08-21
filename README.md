@@ -10,6 +10,7 @@ Simbaña Sandy
 EL programa lo realizamos en lenguaje de programacion JAVA con IDE Netbeans.
 Para la facilidad de la verificacion de la funcionalidad de nuestro proyecto se ha habilitado los ejecutables.
 Donde primero se debe ejecutar el servidor para que el cliente se pueda conectar cabe señalar como nuestro programa se realizo en RED por ello la Ip ingresada en usuario debe ser la del servidor.
+
 VENTAJAS
 
 Nos permite realizar el conteo de las palabras que empiezen con la inicial que ingresemos.
@@ -22,7 +23,10 @@ Los libros deben estar en formato txt y por la cual es una limitacion para el an
 
 La obtencion de los libros en format txt es muy dificil de encontrar. 
 
+
 PASOS PARA EJECUTAR EL SERVIDOR
+
+
 solo abrir el ejecutable (El archivo en formato .JAR)
 
 PASOS PARA EJECUTAR EL CLIENTE
