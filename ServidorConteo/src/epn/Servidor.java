@@ -35,8 +35,8 @@ public class Servidor extends Thread {					//Clase que implementa Thread y que c
     public void recibirDatos() {			//el flujo recibido es tratado para obtener los parametros necesarios
         						//del calcula de palabras
         StringTokenizer tokens = new StringTokenizer(flujo, "-");
-        directorio = tokens.nextToken();
-        letra = tokens.nextToken();
+        directorio = tokens.nextToken();		//Asignamos los tokens a una variable string
+        letra = tokens.nextToken();			//Escogemos la letra a buscar extrayendola de la cadena de texto ingresada desde la interfaz cliente
         EnviarConteo();					//Con los parametros ya extraidos se llama al metodo que realiza los calculos
         
     }
